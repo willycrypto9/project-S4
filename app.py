@@ -13,7 +13,7 @@ fig = px.histogram(df, x="model")
 st.plotly_chart(fig)
 
 #scatter plot
-fig = px.scatter(df, x="fuel", y="type")git status
+fig = px.scatter(df, x="fuel", y="type")
 st.plotly_chart(fig)
 
 if st.checkbox("Show data"):
