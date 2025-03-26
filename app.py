@@ -9,17 +9,6 @@ df = pd.read_csv("vehicles_us.csv")
 st.header('Market of Sales Vehicles ')
 st.write("Here is the Analysis of Vehicle Sales ")
 
-if st.checkbox("Show data"):
-    st.write(df.head())
-
-#histogram
-fig = px.histogram(df, x="model")
-st.plotly_chart(fig)
-
-#scatter plot
-fig = px.scatter(df, x="fuel", y="type")
-st.plotly_chart(fig)
-
 # Handling missing values
 df['paint_color']= df['paint_color'].fillna('unknown') # Replacing missing paint
 df['is_4wd'] = df['is_4wd'].fillna(0) # Replacing 2wd by 0
@@ -30,6 +19,18 @@ df['odometer'] = df['odometer'].fillna(df.groupby(['model'])['odometer'].transfo
 # Replacing missing cylinders values grouped with model
 df['cylinders'] = df['cylinders'].fillna(df.groupby(['model'])['cylinders'].transform( 'median' ))
 
+if st.checkbox("Show data"):
+    st.write(df.head())
+
+
+
+#histogram
+fig = px.histogram(df, x="model")
+st.plotly_chart(fig)
+
+#scatter plot
+fig = px.scatter(df, x="fuel", y="type")
+st.plotly_chart(fig)
 
 # Visualizing the values
 fig_price = px.histogram(df, x="price", title="price Distribution")
