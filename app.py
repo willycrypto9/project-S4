@@ -22,8 +22,6 @@ df['cylinders'] = df['cylinders'].fillna(df.groupby(['model'])['cylinders'].tran
 if st.checkbox("Show data"):
     st.write(df.head())
 
-
-
 #histogram
 fig = px.histogram(df, x="model")
 st.plotly_chart(fig)
